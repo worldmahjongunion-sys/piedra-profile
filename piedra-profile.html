@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piedra — 自己紹介</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F3EC;
+    --paper:#FBF8F3;
+    --ink:#2C3A4A;
+    --jade:#7A9B85;
+    --plum:#A9718A;
+    --gold:#C9A227;
+    --text-soft:#5B6570;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(122,155,133,0.08), transparent 45%),
+      radial-gradient(circle at 85% 90%, rgba(169,113,138,0.08), transparent 45%),
+      var(--cream);
+    font-family:"Zen Maru Gothic", sans-serif;
+    color:var(--text-soft);
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:72px 24px 96px;
+  }
+
+  /* --- Hero --- */
+  .hero{
+    text-align:center;
+    padding-bottom:56px;
+  }
+
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    letter-spacing:0.08em;
+    color:var(--jade);
+    background:rgba(122,155,133,0.12);
+    border:1px solid rgba(122,155,133,0.3);
+    border-radius:999px;
+    padding:6px 16px;
+    margin-bottom:28px;
+  }
+
+  .badge::before{
+    content:"";
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--jade);
+    display:inline-block;
+  }
+
+  h1{
+    font-family:"Shippori Mincho", serif;
+    font-weight:700;
+    font-size:clamp(48px, 10vw, 76px);
+    color:var(--ink);
+    margin:0 0 12px;
+    letter-spacing:0.03em;
+  }
+
+  .kana{
+    font-size:14px;
+    letter-spacing:0.35em;
+    color:var(--text-soft);
+    opacity:0.65;
+    margin-bottom:20px;
+  }
+
+  .role{
+    font-family:"Shippori Mincho", serif;
+    font-size:17px;
+    color:var(--text-soft);
+  }
+
+  /* --- signature emblem --- */
+  .emblem{
+    margin:40px auto 0;
+    width:120px;
+  }
+
+  /* --- section divider --- */
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin:8px 0 40px;
+    color:var(--gold);
+  }
+  .divider .line{
+    flex:1;
+    height:1px;
+    background:linear-gradient(to right, transparent, rgba(201,162,39,0.5), transparent);
+  }
+  .divider .mark{
+    font-family:"Shippori Mincho", serif;
+    font-size:14px;
+    letter-spacing:0.2em;
+  }
+
+  section{ margin-bottom:64px; }
+
+  h2{
+    font-family:"Shippori Mincho", serif;
+    font-size:26px;
+    color:var(--ink);
+    text-align:center;
+    margin:0 0 36px;
+  }
+
+  /* --- like cards --- */
+  .likes{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  @media (max-width:600px){
+    .likes{ grid-template-columns:1fr; }
+  }
+
+  .card{
+    background:var(--paper);
+    border-radius:20px;
+    padding:28px 26px;
+    box-shadow:0 8px 24px rgba(44,58,74,0.06);
+    border:1px solid rgba(44,58,74,0.06);
+  }
+
+  .card .icon{
+    width:40px;
+    height:40px;
+    margin-bottom:16px;
+  }
+
+  .card h3{
+    font-family:"Shippori Mincho", serif;
+    font-size:19px;
+    color:var(--ink);
+    margin:0 0 10px;
+  }
+
+  .card p{
+    font-size:15px;
+    margin:0;
+  }
+
+  .tag{
+    display:inline-block;
+    margin-top:14px;
+    font-size:12px;
+    letter-spacing:0.05em;
+    color:var(--plum);
+    background:rgba(169,113,138,0.1);
+    border-radius:999px;
+    padding:4px 12px;
+  }
+
+  /* --- message scroll --- */
+  .message{
+    position:relative;
+    background:var(--paper);
+    border-radius:24px;
+    padding:44px 40px;
+    box-shadow:0 10px 30px rgba(44,58,74,0.07);
+    border:1px solid rgba(201,162,39,0.18);
+  }
+  @media (max-width:600px){
+    .message{ padding:36px 26px; }
+  }
+
+  .message::before{
+    content:"「";
+    font-family:"Shippori Mincho", serif;
+    font-size:48px;
+    color:rgba(201,162,39,0.4);
+    position:absolute;
+    top:8px;
+    left:20px;
+    line-height:1;
+  }
+
+  .message::after{
+    content:"」";
+    font-family:"Shippori Mincho", serif;
+    font-size:48px;
+    color:rgba(201,162,39,0.4);
+    position:absolute;
+    bottom:-4px;
+    right:20px;
+    line-height:1;
+  }
+
+  .message p{
+    position:relative;
+    z-index:1;
+    font-size:16px;
+    color:var(--ink);
+    margin:0;
+    text-align:center;
+    padding:0 8px;
+  }
+
+  /* --- fortune section --- */
+  .fortune-buttons{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:14px;
+  }
+  @media (max-width:500px){
+    .fortune-buttons{ grid-template-columns:repeat(2, 1fr); }
+  }
+
+  .fortune-btn{
+    font-family:"Shippori Mincho", serif;
+    font-size:18px;
+    letter-spacing:0.05em;
+    padding:18px 10px;
+    border-radius:16px;
+    border:1.5px solid transparent;
+    background:var(--paper);
+    color:var(--ink);
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(44,58,74,0.06);
+    transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .fortune-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 22px rgba(44,58,74,0.1);
+  }
+  .fortune-btn:active{ transform:translateY(0); }
+
+  .fortune-btn[data-type="A"]{ border-color:rgba(122,155,133,0.4); }
+  .fortune-btn[data-type="B"]{ border-color:rgba(169,113,138,0.4); }
+  .fortune-btn[data-type="O"]{ border-color:rgba(201,162,39,0.5); }
+  .fortune-btn[data-type="AB"]{ border-color:rgba(44,58,74,0.3); }
+
+  .fortune-btn.active[data-type="A"]{ background:rgba(122,155,133,0.14); }
+  .fortune-btn.active[data-type="B"]{ background:rgba(169,113,138,0.14); }
+  .fortune-btn.active[data-type="O"]{ background:rgba(201,162,39,0.16); }
+  .fortune-btn.active[data-type="AB"]{ background:rgba(44,58,74,0.08); }
+
+  .fortune-result{
+    margin-top:24px;
+    background:var(--paper);
+    border-radius:20px;
+    padding:0;
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    box-shadow:0 8px 24px rgba(44,58,74,0.06);
+    border:1px solid rgba(201,162,39,0.15);
+    transition:max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+  }
+  .fortune-result.show{
+    max-height:300px;
+    opacity:1;
+    padding:26px 28px;
+  }
+  .fortune-result .ftype{
+    font-family:"Shippori Mincho", serif;
+    font-size:14px;
+    color:var(--jade);
+    letter-spacing:0.1em;
+    margin-bottom:8px;
+  }
+  .fortune-result .ftext{
+    font-size:16px;
+    color:var(--ink);
+    margin:0 0 10px;
+  }
+  .fortune-result .flucky{
+    font-size:13px;
+    color:var(--plum);
+  }
+
+  footer{
+    text-align:center;
+    padding-top:24px;
+    font-size:13px;
+    color:var(--text-soft);
+    opacity:0.6;
+  }
+
+  footer .fmark{
+    display:block;
+    margin:0 auto 14px;
+    width:28px;
+    height:28px;
+    opacity:0.5;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .fade-in{
+      animation: fadeUp 0.9s ease both;
+    }
+    @keyframes fadeUp{
+      from{ opacity:0; transform:translateY(14px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+  }
+
+  /* --- スマホ用：画面内に収まるようコンパクト化 --- */
+  @media (max-width:600px){
+    body{ line-height:1.5; }
+
+    .wrap{
+      padding:28px 16px 32px;
+    }
+
+    .hero{ padding-bottom:22px; }
+
+    .badge{
+      font-size:11px;
+      padding:4px 12px;
+      margin-bottom:12px;
+    }
+
+    h1{
+      font-size:clamp(30px, 11vw, 40px);
+      margin:0 0 6px;
+    }
+
+    .kana{
+      font-size:11px;
+      letter-spacing:0.25em;
+      margin-bottom:8px;
+    }
+
+    .role{ font-size:13px; }
+
+    .emblem{
+      width:72px;
+      margin:16px auto 0;
+    }
+
+    .divider{ margin:0 0 16px; }
+    .divider .mark{ font-size:12px; }
+
+    section{ margin-bottom:22px; }
+
+    .likes{ gap:10px; }
+
+    .card{
+      padding:14px 12px;
+      border-radius:14px;
+    }
+    .card .icon{
+      width:26px;
+      height:26px;
+      margin-bottom:6px;
+    }
+    .card h3{
+      font-size:14px;
+      margin:0 0 4px;
+    }
+    .card p{
+      font-size:11.5px;
+      line-height:1.5;
+    }
+    .tag{
+      font-size:10px;
+      margin-top:8px;
+      padding:3px 9px;
+    }
+
+    .message{
+      padding:22px 18px;
+      border-radius:16px;
+    }
+    .message::before, .message::after{ font-size:30px; }
+    .message p{ font-size:13px; }
+
+    .fortune-buttons{ gap:8px; }
+    .fortune-btn{
+      font-size:14px;
+      padding:10px 4px;
+      border-radius:12px;
+    }
+
+    .fortune-result.show{ padding:16px 16px; }
+    .fortune-result .ftype{ font-size:12px; margin-bottom:4px; }
+    .fortune-result .ftext{ font-size:13px; margin:0 0 6px; }
+    .fortune-result .flucky{ font-size:11px; }
+
+    p[style]{ font-size:11px !important; margin-top:-8px !important; margin-bottom:16px !important; }
+
+    footer{ padding-top:8px; font-size:11px; }
+    footer .fmark{ width:20px; height:20px; margin-bottom:8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="hero fade-in">
+    <div class="badge">麻雀共同体 WW 所属</div>
+    <div class="kana">ぴえどら</div>
+    <h1>Piedra</h1>
+    <p class="role">競技麻雀プレイヤー ／ ポーカーエンジョイ勢</p>
+
+    <svg class="emblem" viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg">
+      <!-- mahjong tile -->
+      <rect x="8" y="10" width="56" height="50" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+      <text x="36" y="43" font-family="Shippori Mincho, serif" font-size="26" fill="var(--jade)" text-anchor="middle">發</text>
+      <!-- playing card, overlapping -->
+      <rect x="52" y="6" width="44" height="58" rx="8" fill="var(--paper)" stroke="var(--plum)" stroke-width="2" transform="rotate(12 74 35)"/>
+      <text x="74" y="40" font-family="Shippori Mincho, serif" font-size="24" fill="var(--plum)" text-anchor="middle" transform="rotate(12 74 35)">♠</text>
+    </svg>
+  </div>
+
+  <section class="fade-in">
+    <div class="divider"><span class="line"></span><span class="mark">好きなこと</span><span class="line"></span></div>
+
+    <div class="likes">
+      <div class="card">
+        <svg class="icon" viewBox="0 0 40 40"><rect x="6" y="6" width="28" height="28" rx="6" fill="none" stroke="var(--jade)" stroke-width="2"/><text x="20" y="26" font-family="Shippori Mincho, serif" font-size="16" fill="var(--jade)" text-anchor="middle">麻</text></svg>
+        <h3>競技麻雀</h3>
+        <p>麻雀共同体WWというプロ麻雀団体に所属。日々の対局を通じて、いずれは新しいルールでの麻雀対局を実現したいと考えています。</p>
+        <span class="tag">WW所属</span>
+      </div>
+
+      <div class="card">
+        <svg class="icon" viewBox="0 0 40 40"><rect x="6" y="4" width="24" height="32" rx="4" fill="none" stroke="var(--plum)" stroke-width="2"/><text x="18" y="24" font-size="16" fill="var(--plum)" text-anchor="middle">♣</text></svg>
+        <h3>テキサスホールデムポーカー</h3>
+        <p>今流行りのテキサスホールデムをオンラインでよくプレイしています。いつか、自分だけの練習用ソフトを作ってみたいです。</p>
+        <span class="tag">オンライン対戦</span>
+      </div>
+
+      <div class="card">
+        <svg class="icon" viewBox="0 0 40 40"><rect x="8" y="6" width="24" height="30" rx="4" fill="none" stroke="var(--gold)" stroke-width="2"/><text x="20" y="26" font-family="Shippori Mincho, serif" font-size="14" fill="var(--gold)" text-anchor="middle">花</text></svg>
+        <h3>花札</h3>
+        <p>花合わせが好きで、自分でルールを考えながら遊べるアプリを自作中。役や特殊ルールを少しずつ育てています。</p>
+        <span class="tag">自作アプリ制作中</span>
+      </div>
+
+      <div class="card">
+        <svg class="icon" viewBox="0 0 40 40"><circle cx="20" cy="12" r="6" fill="none" stroke="var(--plum)" stroke-width="2"/><path d="M20 18 L20 30 M12 24 L28 24 M20 30 L14 36 M20 30 L26 36" stroke="var(--plum)" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        <h3>SALSAダンス</h3>
+        <p>音楽に合わせて体を動かす時間がお気に入り。踊っている間は頭がすっきりして、良い気分転換になっています。</p>
+        <span class="tag">社交ダンス</span>
+      </div>
+
+      <div class="card">
+        <svg class="icon" viewBox="0 0 40 40"><line x1="14" y1="34" x2="14" y2="6" stroke="var(--jade)" stroke-width="2"/><path d="M14 6 L28 11 L14 16 Z" fill="var(--jade)"/><circle cx="14" cy="36" r="3" fill="none" stroke="var(--jade)" stroke-width="1.5"/></svg>
+        <h3>GOLF</h3>
+        <p>スコアを伸ばそうと練習中。自然の中でのんびり体を動かせるのも、ゴルフの好きなところです。</p>
+        <span class="tag">コース巡り</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="fade-in">
+    <div class="divider"><span class="line"></span><span class="mark">一言</span><span class="line"></span></div>
+    <div class="message">
+      <p>いずれは新しいルールでの麻雀対局ができれば良いと考えています。<br>
+      また、Pokerの練習用ソフトが作れたらいいなと思っています。</p>
+    </div>
+  </section>
+
+  <section class="fade-in">
+    <div class="divider"><span class="line"></span><span class="mark">今日の運勢</span><span class="line"></span></div>
+    <p style="text-align:center; margin-top:-16px; margin-bottom:28px; font-size:14px;">血液型を選んでね</p>
+
+    <div class="fortune-buttons">
+      <button class="fortune-btn" data-type="A" onclick="showFortune('A', this)">A型</button>
+      <button class="fortune-btn" data-type="B" onclick="showFortune('B', this)">B型</button>
+      <button class="fortune-btn" data-type="O" onclick="showFortune('O', this)">O型</button>
+      <button class="fortune-btn" data-type="AB" onclick="showFortune('AB', this)">AB型</button>
+    </div>
+
+    <div class="fortune-result" id="fortuneResult">
+      <div class="ftype" id="fortuneTypeLabel"></div>
+      <p class="ftext" id="fortuneText"></p>
+      <div class="flucky" id="fortuneLucky"></div>
+    </div>
+  </section>
+
+  <footer>
+    <svg class="fmark" viewBox="0 0 28 28"><rect x="3" y="3" width="22" height="22" rx="5" fill="none" stroke="var(--ink)" stroke-width="1.5"/><text x="14" y="19" font-family="Shippori Mincho, serif" font-size="12" fill="var(--ink)" text-anchor="middle">麻</text></svg>
+    Piedra
+  </footer>
+
+</div>
+
+<script>
+  const fortunes = {
+    A: [
+      { text: "丁寧に手を進めれば、思わぬ好形が育つ日。焦らず一手一手を大切に。", lucky: "ラッキーカラー：翡翠色" },
+      { text: "周りとの息が合いやすいタイミング。相談してみると良い流れに。", lucky: "ラッキーアイテム：使い慣れた道具" },
+      { text: "小さな見直しが後で効いてくる日。基本の確認を丁寧に。", lucky: "ラッキーカラー：クリーム色" },
+      { text: "堅実な選択が実を結ぶ運気。冒険よりも安定を選ぶと吉。", lucky: "ラッキーナンバー：4" }
+    ],
+    B: [
+      { text: "直感が冴える日。迷ったら、最初にひらめいた方を選んでみて。", lucky: "ラッキーカラー：梅色" },
+      { text: "自由な発想が良い方向へ転がる予感。新しいやり方を試すのも◎", lucky: "ラッキーアイテム：お気に入りの飲み物" },
+      { text: "マイペースに構えるほど運が味方する日。焦らずいこう。", lucky: "ラッキーナンバー：7" },
+      { text: "思い切った一歩が流れを変える日。勝負どころは逃さずに。", lucky: "ラッキーカラー：金色" }
+    ],
+    O: [
+      { text: "勢いに乗れる日。積極的な姿勢がそのまま結果に表れそう。", lucky: "ラッキーカラー：金色" },
+      { text: "リーダーシップが発揮できる運気。周りをまとめる役回りが吉。", lucky: "ラッキーアイテム：メモ帳" },
+      { text: "粘り強さが評価される日。最後まで諦めないことが鍵に。", lucky: "ラッキーナンバー：8" },
+      { text: "大きな決断をするなら今日。自信を持って進んで大丈夫。", lucky: "ラッキーカラー：翡翠色" }
+    ],
+    AB: [
+      { text: "客観的な視点が冴える日。俯瞰して考えると良い判断ができそう。", lucky: "ラッキーカラー：紺色" },
+      { text: "二つの選択肢で迷ったら、どちらも試してみるのが吉。", lucky: "ラッキーアイテム：ノート" },
+      { text: "バランス感覚が光る運気。周囲との調和を意識すると◎", lucky: "ラッキーナンバー：2" },
+      { text: "ふとした気づきが大きなヒントになる日。感覚を大事に。", lucky: "ラッキーカラー：クリーム色" }
+    ]
+  };
+
+  function dayIndex(seedText, arrayLength){
+    const today = new Date();
+    const dateStr = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
+    const str = dateStr + seedText;
+    let hash = 0;
+    for(let i=0; i<str.length; i++){
+      hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+    }
+    return hash % arrayLength;
+  }
+
+  function showFortune(type, btn){
+    document.querySelectorAll(".fortune-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const list = fortunes[type];
+    const idx = dayIndex(type, list.length);
+    const result = list[idx];
+
+    document.getElementById("fortuneTypeLabel").textContent = type + "型の今日の運勢";
+    document.getElementById("fortuneText").textContent = result.text;
+    document.getElementById("fortuneLucky").textContent = result.lucky;
+
+    const box = document.getElementById("fortuneResult");
+    box.classList.remove("show");
+    void box.offsetWidth;
+    box.classList.add("show");
+  }
+</script>
+</body>
+</html>
