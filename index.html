@@ -9,8 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream:#F7F3EC;
-    --paper:#FBF8F3;
+    --cream:#FBF1E1;
+    --paper:#FFFBF4;
     --ink:#2C3A4A;
     --jade:#7A9B85;
     --plum:#A9718A;
@@ -25,8 +25,8 @@
   body{
     margin:0;
     background:
-      radial-gradient(circle at 15% 10%, rgba(122,155,133,0.08), transparent 45%),
-      radial-gradient(circle at 85% 90%, rgba(169,113,138,0.08), transparent 45%),
+      radial-gradient(circle at 15% 10%, rgba(201,162,39,0.06), transparent 45%),
+      radial-gradient(circle at 85% 90%, rgba(169,113,138,0.06), transparent 45%),
       var(--cream);
     font-family:"Zen Maru Gothic", sans-serif;
     color:var(--text-soft);
@@ -44,6 +44,46 @@
   .hero{
     text-align:center;
     padding-bottom:56px;
+  }
+
+  .photo-frame{
+    width:180px;
+    height:180px;
+    margin:0 auto 32px;
+    border-radius:50%;
+    overflow:hidden;
+    background:
+      linear-gradient(var(--paper), var(--paper)) padding-box,
+      linear-gradient(135deg, var(--gold), var(--jade) 50%, var(--plum)) border-box;
+    border:4px solid transparent;
+    box-shadow:0 12px 32px rgba(44,58,74,0.1);
+  }
+
+  .photo-frame .photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .photo-frame .photo-placeholder{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:6px;
+    color:var(--text-soft);
+    font-size:12px;
+    text-align:center;
+    padding:0 16px;
+  }
+
+  .photo-frame .photo-placeholder svg{
+    width:44px;
+    height:44px;
+    opacity:0.5;
   }
 
   .badge{
@@ -328,6 +368,15 @@
 
     .hero{ padding-bottom:22px; }
 
+    .photo-frame{
+      width:112px;
+      height:112px;
+      margin:0 auto 18px;
+      border-width:3px;
+    }
+    .photo-frame .photo-placeholder{ font-size:10px; gap:4px; }
+    .photo-frame .photo-placeholder svg{ width:30px; height:30px; }
+
     .badge{
       font-size:11px;
       padding:4px 12px;
@@ -413,10 +462,20 @@
 <div class="wrap">
 
   <div class="hero fade-in">
+    <template id="photoPlaceholder">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        <span>photo.jpg を<br>追加してください</span>
+      </div>
+    </template>
+    <div class="photo-frame">
+      <img class="photo" src="photo.jpg" alt="Piedraの写真"
+        onerror="this.replaceWith(document.getElementById('photoPlaceholder').content.cloneNode(true))">
+    </div>
     <div class="badge">麻雀共同体 WW 所属</div>
     <div class="kana">ぴえどら</div>
     <h1>Piedra</h1>
-    <p class="role">競技麻雀プレイヤー ／ ポーカーエンジョイ勢</p>
+    <p class="role">麻雀とポーカーが好きな、のんびり屋さんです</p>
 
     <svg class="emblem" viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg">
       <!-- mahjong tile -->
@@ -472,8 +531,8 @@
   <section class="fade-in">
     <div class="divider"><span class="line"></span><span class="mark">一言</span><span class="line"></span></div>
     <div class="message">
-      <p>いずれは新しいルールでの麻雀対局ができれば良いと考えています。<br>
-      また、Pokerの練習用ソフトが作れたらいいなと思っています。</p>
+      <p>麻雀もポーカーも、対局のたびに新しい発見があって、飽きることがありません。<br>
+      いつか自分の手で新しいルールの麻雀を生み出したり、みんなで楽しめるポーカーの練習ソフトを作れたらいいなと、あたたかい気持ちで夢見ています。</p>
     </div>
   </section>
 
